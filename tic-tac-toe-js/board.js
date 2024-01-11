@@ -33,4 +33,29 @@ class Board {
       return false;
     }
   }
+
+  wonRow(mark) {
+    for (let i = 0; i < this.board.length; i++) {
+      const element = this.board[i];
+      if (element.every((ele) => ele === mark)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  wonCol(mark) {
+    for (let i = 0; i < this.board.length; i++) {
+      const check = [];
+      for (let j = 0; j < this.board.length; j++) {
+        if (this.board[j][i] === mark) {
+          check.push(mark);
+        }
+      }
+      if (check.length === 3) {
+        return true;
+      }
+    }
+    return false;
+  }
 }
