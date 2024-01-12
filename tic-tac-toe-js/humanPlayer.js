@@ -30,9 +30,7 @@ class HumanPlayer {
     console.log(
       `Picked name: ${this.playerName} \n Picked mark: ${this.playerMark}`
     );
-    reader.close();
   }
 }
 
-const a = new HumanPlayer();
-a.create();
+module.exports = HumanPlayer;
