@@ -26,8 +26,9 @@ class Board {
   }
 
   placeMark(pos, mark) {
-    if (this.isValidMove(pos)) {
+    if (this.isValidMove(pos) && this.empty(pos)) {
       this.board[pos[0]][pos[1]] = mark;
+      this.print();
       return true;
     } else {
       return false;
@@ -68,5 +69,21 @@ class Board {
       return true;
     }
     return false;
+  }
+
+  draw() {
+    if (this.board.some((row) => row.some((ele) => ele === "_"))) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  winner(mark) {
+    if (this.wonDiag(mark) || this.wonCol(mark) || this.wonRow(mark)) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
