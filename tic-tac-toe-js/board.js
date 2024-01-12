@@ -58,4 +58,15 @@ class Board {
     }
     return false;
   }
+
+  wonDiag(mark) {
+    const diag1 = [this.board[0][0], this.board[1][1], this.board[2][2]];
+    const diag2 = [this.board[0][2], this.board[1][1], this.board[2][0]];
+    if (diag1.every((pos) => pos === mark)) {
+      return true;
+    } else if (diag2.every((pos) => pos === mark)) {
+      return true;
+    }
+    return false;
+  }
 }
