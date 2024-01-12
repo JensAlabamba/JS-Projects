@@ -11,8 +11,7 @@ function completionCallback() {
   console.log("Game over. Play again? (yes/no): ");
   reader.question("> ", (answer) => {
     if (answer.toLowerCase() === "yes") {
-      const newGame = new Game();
-      newGame.run(completionCallback);
+      initializeGame();
     } else {
       reader.close();
       process.exit();
@@ -20,5 +19,10 @@ function completionCallback() {
   });
 }
 
-const game = new Game();
-game.run(completionCallback);
+async function initializeGame() {
+  const game = new Game();
+  await game.createPlayers();
+  game.run(completionCallback);
+}
+
+initializeGame();

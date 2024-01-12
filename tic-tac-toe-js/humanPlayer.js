@@ -28,7 +28,7 @@ class HumanPlayer {
       });
     });
     console.log(
-      `Picked name: ${this.playerName} \n Picked mark: ${this.playerMark}`
+      `Picked name: ${this.playerName} \nPicked mark: ${this.playerMark} \n------------------------------------`
     );
   }
 }

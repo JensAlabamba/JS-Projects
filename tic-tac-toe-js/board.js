@@ -28,7 +28,7 @@ class Board {
   placeMark(pos, mark) {
     if (this.isValidMove(pos) && this.empty(pos)) {
       this.board[pos[0]][pos[1]] = mark;
-      this.print();
+      // this.print();
       return true;
     } else {
       return false;

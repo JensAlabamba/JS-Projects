@@ -22,7 +22,7 @@ class Game {
     console.log("Enter a place you want to put your mark eg. '0 0': ");
     reader.question(">  ", (input) => {
       const [rowIdx, colIdx] = input.split(" ").map(Number);
-      callback(rowIdx, colIdx);
+      callback([rowIdx, colIdx]);
     });
   }
 
@@ -39,8 +39,42 @@ class Game {
     await this.player2.create();
     console.log(`Players created: `);
     console.log(
-      `Player 1: ${this.player1.playerName} \n Player 2: ${this.player2.playerName}`
+      `Player 1: ${this.player1.playerName} \nPlayer 2: ${this.player2.playerName}`
     );
+  }
+
+  async run(completionCallback) {
+    while (
+      !this.board.winner(this.currentPlayerMove.playerMark) &&
+      !this.board.draw()
+    ) {
+      await new Promise((resolve) => {
+        this.promptMove(([rowIdx, colIdx]) => {
+          if (
+            this.board.placeMark(
+              [rowIdx, colIdx],
+              this.currentPlayerMove.playerMark
+            )
+          ) {
+            if (this.board.winner(this.currentPlayerMove.playerMark)) {
+              console.log(`${this.currentPlayerMove.playerName} is a winner!`);
+              resolve();
+            } else if (this.board.draw() === true) {
+              console.log("It's a DRAW!!!");
+              resolve();
+            } else {
+              this.switchTurn();
+              console.log(`${this.currentPlayerMove.playerName}! Your move!`);
+              resolve();
+            }
+          } else {
+            console.log("Invalid move!");
+            resolve();
+          }
+        });
+      });
+    }
+    completionCallback();
   }
 }
 
