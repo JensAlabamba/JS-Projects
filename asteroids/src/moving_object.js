@@ -5,7 +5,9 @@ function MovingObject(options) {
   this.color = options.color;
 }
 
-// MovingObject.prototype.move = function () {};
+MovingObject.prototype.move = function () {
+  this.pos[1] += this.vel[1];
+};
 
 MovingObject.prototype.draw = function draw(ctx) {
   ctx.fillStyle = this.color;
