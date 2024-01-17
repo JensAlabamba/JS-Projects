@@ -19,7 +19,7 @@ Game.prototype.add = function (object) {
 };
 
 Game.prototype.addAsteroids = function () {
-  for (i = 0; i < Game.NUM_ASTEROIDS; i++) {
+  for (var i = 0; i < Game.NUM_ASTEROIDS; i++) {
     this.add(new Asteroid({ game: this }));
   }
 };
@@ -49,3 +49,5 @@ Game.prototype.moveObjects = function () {
     obj.move();
   });
 };
+
+module.exports = Game;
