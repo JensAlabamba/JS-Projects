@@ -12,7 +12,7 @@ function Game() {
 Game.BG_COLOR = "black";
 Game.DIM_X = 1000;
 Game.DIM_Y = 900;
-Game.NUM_ASTEROIDS = 30;
+Game.NUM_ASTEROIDS = 10;
 
 Game.prototype.add = function (object) {
   if (object instanceof Asteroid) {
@@ -48,10 +48,6 @@ Game.prototype.allObjects = function allObjects() {
 Game.prototype.randomPosition = function randomPosition() {
   return [Game.DIM_X * Math.random(), Game.DIM_Y * Math.random()];
 };
-
-// Game.prototype.step = function () {};
-
-// Game.prototype.checkCollisions = function () {};
 
 Game.prototype.draw = function (ctx) {
   ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);

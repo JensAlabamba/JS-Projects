@@ -24,8 +24,7 @@ MovingObject.prototype.move = function () {
 };
 
 MovingObject.prototype.collideWith = function collideWith(otherObject) {
-  this.game.remove(this);
-  this.game.remove(otherObject);
+  // default
 };
 
 MovingObject.prototype.isCollidedWith = function (otherObject) {
