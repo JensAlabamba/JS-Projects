@@ -6,7 +6,6 @@ function Game() {
   this.ships = [];
   this.bullets = [];
   this.addAsteroids();
-  this.addShip();
 }
 
 Game.BG_COLOR = "black";
@@ -77,7 +76,7 @@ Game.prototype.checkCollisions = function () {
         // Check if i is not equal to j to avoid self-collision
         const collision = obj1.collideWith(obj2);
         if (collision) {
-          alert("COLLISION");
+          // alert("COLLISION");
         }
       }
     }
