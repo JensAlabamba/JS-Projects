@@ -8,7 +8,7 @@ function GameView(game, ctx) {
 GameView.prototype.start = function () {
   var self = this;
   this.interval = setInterval(function () {
-    self.game.moveObjects();
+    self.game.step();
     self.game.draw(self.ctx);
   }, 20);
 };

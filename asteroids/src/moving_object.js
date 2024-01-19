@@ -1,3 +1,5 @@
+const Util = require("./utils");
+
 function MovingObject(options) {
   this.pos = options.pos;
   this.vel = options.vel;
@@ -19,6 +21,16 @@ MovingObject.prototype.move = function () {
       this.remove();
     }
   }
+};
+
+MovingObject.prototype.collideWith = function collideWith(otherObject) {
+  this.game.remove(this);
+  this.game.remove(otherObject);
+};
+
+MovingObject.prototype.isCollidedWith = function (otherObject) {
+  const centerDist = Util.dist(this.pos, otherObject.pos);
+  return centerDist < this.radius + otherObject.radius;
 };
 
 MovingObject.prototype.remove = function () {
