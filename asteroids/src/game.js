@@ -1,23 +1,38 @@
 const Asteroid = require("./asteoroid");
+const Ship = require("./ship");
 const Util = require("./utils");
 function Game() {
   this.asteroids = [];
   this.ships = [];
   this.bullets = [];
   this.addAsteroids();
+  this.addShip();
 }
 
 Game.BG_COLOR = "black";
 Game.DIM_X = 1000;
 Game.DIM_Y = 900;
-Game.NUM_ASTEROIDS = 10;
+Game.NUM_ASTEROIDS = 30;
 
 Game.prototype.add = function (object) {
   if (object instanceof Asteroid) {
     this.asteroids.push(object);
+  } else if (object instanceof Ship) {
+    this.ships.push(object);
   } else {
     throw new Error("Invalid Object");
   }
+};
+
+Game.prototype.addShip = function () {
+  const ship = new Ship({
+    pos: this.randomPosition(),
+    game: this,
+  });
+
+  this.add(ship);
+
+  return ship;
 };
 
 Game.prototype.addAsteroids = function () {
@@ -43,13 +58,13 @@ Game.prototype.draw = function (ctx) {
   ctx.fillStyle = Game.BG_COLOR;
   ctx.fillRect(0, 0, Game.DIM_X, Game.DIM_Y);
 
-  this.asteroids.forEach(function (obj) {
+  this.allObjects().forEach(function (obj) {
     obj.draw(ctx);
   });
 };
 
 Game.prototype.moveObjects = function () {
-  this.asteroids.forEach(function (obj) {
+  this.allObjects().forEach(function (obj) {
     obj.move();
   });
 };
