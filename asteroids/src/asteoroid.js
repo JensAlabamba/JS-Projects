@@ -27,7 +27,9 @@ Asteroid.prototype.collideWith = function (otherObject) {
   } else if (otherObject instanceof Bullet) {
     this.remove();
     otherObject.remove();
+    return true;
   }
+  return false;
 };
 
 module.exports = Asteroid;
