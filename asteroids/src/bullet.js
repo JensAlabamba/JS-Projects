@@ -7,11 +7,11 @@ function Bullet(options) {
   MovingObject.call(this, options);
 }
 
-Bullet.RADIUS = 2;
-Bullet.SPEED = 15;
+Bullet.RADIUS = 5;
+Bullet.SPEED = 5;
 
 Util.inherits(Bullet, MovingObject);
 
-// Bullet.prototype.isWrappable = false; // must uncomment!!!
+Bullet.prototype.isWrappable = false; // must uncomment!!!
 
 module.exports = Bullet;
