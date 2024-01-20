@@ -24,7 +24,7 @@ MovingObject.prototype.move = function () {
 };
 
 MovingObject.prototype.collideWith = function collideWith(otherObject) {
-  // default
+  // DEAFULT
 };
 
 MovingObject.prototype.isCollidedWith = function (otherObject) {

@@ -1,3 +1,4 @@
+const Bullet = require("./bullet");
 const MovingObject = require("./moving_object");
 const Util = require("./utils");
 
@@ -29,4 +30,25 @@ Ship.prototype.power = function (impulse) {
   this.vel[1] += impulse[1];
 };
 
+Ship.prototype.fireBullet = function fireBullet() {
+  const norm = Util.norm(this.vel);
+
+  if (norm === 0) {
+    // Can't fire unless moving.
+    return;
+  }
+
+  const relVel = Util.scale(Util.dir(this.vel), Bullet.SPEED);
+
+  const bulletVel = [relVel[0] + this.vel[0], relVel[1] + this.vel[1]];
+
+  const bullet = new Bullet({
+    pos: this.pos,
+    vel: bulletVel,
+    color: "red",
+    game: this.game,
+  });
+
+  this.game.add(bullet);
+};
 module.exports = Ship;

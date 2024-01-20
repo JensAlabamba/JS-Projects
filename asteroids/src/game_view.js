@@ -31,6 +31,9 @@ GameView.prototype.bindKeyHandlers = function () {
       ship.power(move);
     });
   });
+  key("space", function () {
+    ship.fireBullet();
+  });
 };
 
 module.exports = GameView;

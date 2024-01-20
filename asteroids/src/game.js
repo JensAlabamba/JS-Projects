@@ -1,4 +1,5 @@
 const Asteroid = require("./asteoroid");
+const Bullet = require("./bullet");
 const Ship = require("./ship");
 const Util = require("./utils");
 function Game() {
@@ -9,15 +10,17 @@ function Game() {
 }
 
 Game.BG_COLOR = "black";
-Game.DIM_X = 1000;
-Game.DIM_Y = 900;
-Game.NUM_ASTEROIDS = 10;
+Game.DIM_X = 700;
+Game.DIM_Y = 700;
+Game.NUM_ASTEROIDS = 5;
 
 Game.prototype.add = function (object) {
   if (object instanceof Asteroid) {
     this.asteroids.push(object);
   } else if (object instanceof Ship) {
     this.ships.push(object);
+  } else if (object instanceof Bullet) {
+    this.bullets.push(object);
   } else {
     throw new Error("Invalid Object");
   }
