@@ -79,6 +79,7 @@ Game.prototype.checkCollisions = function () {
         // Check if i is not equal to j to avoid self-collision
         const collision = obj1.collideWith(obj2);
         if (collision) {
+          return;
           // alert("COLLISION");
         }
       }
@@ -86,8 +87,16 @@ Game.prototype.checkCollisions = function () {
   }
 };
 
-Game.prototype.remove = function (asteoroid) {
-  this.asteroids.splice(this.asteroids.indexOf(asteoroid), 1);
+Game.prototype.remove = function remove(object) {
+  if (object instanceof Bullet) {
+    this.bullets.splice(this.bullets.indexOf(object), 1);
+  } else if (object instanceof Asteroid) {
+    this.asteroids.splice(this.asteroids.indexOf(object), 1);
+  } else if (object instanceof Ship) {
+    this.ships.splice(this.ships.indexOf(object), 1);
+  } else {
+    throw new Error("unknown type of object");
+  }
 };
 
 Game.prototype.isOutOfBounds = function (pos) {
