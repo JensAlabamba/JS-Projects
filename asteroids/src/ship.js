@@ -42,8 +42,13 @@ Ship.prototype.fireBullet = function fireBullet() {
 
   const bulletVel = [relVel[0], relVel[1]];
 
+  const bulletPos = [
+    this.pos[0] + relVel[0], // Adjust the distance as needed
+    this.pos[1] + relVel[1], // Adjust the distance as needed
+  ];
+
   const bullet = new Bullet({
-    pos: this.pos,
+    pos: bulletPos,
     vel: bulletVel,
     color: "red",
     game: this.game,
