@@ -13,8 +13,8 @@ function Game() {
 }
 
 Game.BG_COLOR = "black";
-Game.DIM_X = 1200;
-Game.DIM_Y = 800;
+Game.DIM_X = 950;
+Game.DIM_Y = 650;
 Game.NUM_ASTEROIDS = 5;
 
 Game.prototype.add = function (object) {
