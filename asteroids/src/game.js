@@ -7,11 +7,14 @@ function Game() {
   this.ships = [];
   this.bullets = [];
   this.addAsteroids();
+
+  this.backgroundImage = new Image();
+  this.backgroundImage.src = "../src/stars.jpeg";
 }
 
 Game.BG_COLOR = "black";
-Game.DIM_X = 700;
-Game.DIM_Y = 700;
+Game.DIM_X = 1200;
+Game.DIM_Y = 800;
 Game.NUM_ASTEROIDS = 5;
 
 Game.prototype.add = function (object) {
@@ -52,9 +55,11 @@ Game.prototype.randomPosition = function randomPosition() {
 };
 
 Game.prototype.draw = function (ctx) {
-  ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
-  ctx.fillStyle = Game.BG_COLOR;
-  ctx.fillRect(0, 0, Game.DIM_X, Game.DIM_Y);
+  ctx.drawImage(this.backgroundImage, 0, 0, Game.DIM_X, Game.DIM_Y);
+
+  // ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
+  // ctx.fillStyle = Game.BG_COLOR;
+  // ctx.fillRect(0, 0, Game.DIM_X, Game.DIM_Y);
 
   this.allObjects().forEach(function (obj) {
     obj.draw(ctx);
